@@ -126,7 +126,7 @@ void setup()  {
   static IPAddress ip(10, 0, 0, 8 + midiChannel); // each module need another ip
   static IPAddress dns(8,8,8,8);                  // google dns server
   static IPAddress gw(10, 0, 0, 1 );              // default gateway
-  static IPAddress remote(10, 0, 0, 1 );              // default gateway
+  static IPAddress remote(10, 0, 0, 2 );              // default MIDI Host
   static IPAddress mask(255, 255, 255, 0 );       // subnetmask
 
   // Newer Ethernet shields have a MAC address printed on a sticker on the shield
