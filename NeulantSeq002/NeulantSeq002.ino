@@ -126,6 +126,7 @@ void setup()  {
   static IPAddress ip(10, 0, 0, 8 + midiChannel); // each module need another ip
   static IPAddress dns(8,8,8,8);                  // google dns server
   static IPAddress gw(10, 0, 0, 1 );              // default gateway
+  static IPAddress remote(10, 0, 0, 1 );              // default gateway
   static IPAddress mask(255, 255, 255, 0 );       // subnetmask
 
   // Newer Ethernet shields have a MAC address printed on a sticker on the shield
@@ -164,9 +165,9 @@ void setup()  {
 
   // Create a session and wait for a remote host to connect to us
   AppleMIDI.begin("TRAM");
-  AppleMIDI.sendInvite(gw, DEFAULT_CONTROL_PORT); // Trying to connect to Gateway
+  AppleMIDI.sendInvite(remote, DEFAULT_CONTROL_PORT); // Trying to connect to Gateway
 
-  DBG(F("Connecting to "), gw, "Port", DEFAULT_CONTROL_PORT, "(Name", AppleMIDI.getName(), ")");
+  DBG(F("Connecting to "), remote, "Port", DEFAULT_CONTROL_PORT, "(Name", AppleMIDI.getName(), ")");
   DBG(F("Watch as this session is added to the Participants list"));
   DBG(F("Then open a MIDI listener and monitor incoming notes"));
 
