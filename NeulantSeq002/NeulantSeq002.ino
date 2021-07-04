@@ -72,7 +72,7 @@ const uint8_t pinMapOut[16] = {
   4,    5,    6,    7,    3,    2,    1,  0,
   1+8,  0+8,  3+8,  2+8,  5+8,  4+8,  7+8,  6+8   };
 
-
+const uint8_t DEFAULT_CONTROL_PORT = 5004
 
 
 void setup()  {
@@ -164,6 +164,11 @@ void setup()  {
 
   // Create a session and wait for a remote host to connect to us
   AppleMIDI.begin("TRAM");
+  AppleMIDI.sendInvite(gw, DEFAULT_CONTROL_PORT); // Trying to connect to Gateway
+
+  DBG(F("Connecting to "), gw, "Port", DEFAULT_CONTROL_PORT, "(Name", AppleMIDI.getName(), ")");
+  DBG(F("Watch as this session is added to the Participants list"));
+  DBG(F("Then open a MIDI listener and monitor incoming notes"));
 
   AppleMIDI.OnConnected(OnAppleMidiConnected);
   AppleMIDI.OnDisconnected(OnAppleMidiDisconnected);
